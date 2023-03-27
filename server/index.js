@@ -27,6 +27,10 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage: storage});
 
+app.listen(process.env.PORT || 3000, () => {
+    console.log('backend running')
+})
+
 app.post("/api/upload", upload.single("file"), (req, res) => {
     res.status(200).json("file has been uploaded");
 })
@@ -39,14 +43,15 @@ app.use("/",
 
 )
 const clientPath = path.join(__dirname, "../client/build")
+const clientPath2 = path.join(__dirname, "../../client/build")
 console.log(clientPath);
+console.log(clientPath2);
+
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
-app.listen(process.env.PORT || 3000, () => {
-    console.log('backend running')
-})
+
 
 
 
