@@ -38,6 +38,8 @@ app.use("/",
     express.static(path.join(__dirname, "../client/build"))
 
 )
+const clientPath = path.join(__dirname, "../client/build")
+console.log(clientPath);
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
